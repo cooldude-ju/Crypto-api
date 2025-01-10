@@ -15,6 +15,9 @@ const getStats = async (req, res) => {
     const data = await Crypto.findOne({ coin }).sort({ timestamp: -1 });
 
    
+// If no data is found for the specified coin, return a 404 Not Found error
+if (!data) {
+  return res.status(404).json({ error: 'Data not found for the specified coin.' });}
 
     // Respond with the relevant cryptocurrency data in JSON format
     res.json({
