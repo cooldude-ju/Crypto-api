@@ -38,3 +38,4 @@ const fetchCryptoData = async () => {
     console.error('Error fetching data from CoinGecko:', err.message);
   }
 };
+module.exports = fetchCryptoData;
