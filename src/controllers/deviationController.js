@@ -19,10 +19,7 @@ const getDeviation = async (req, res) => {
   // Extract the `coin` query parameter from the request
   const { coin } = req.query;
 
-  // Validate that the `coin` parameter is provided
-  if (!coin) {
-    return res.status(400).json({ error: 'Coin is required.' }); // Respond with a 400 Bad Request error if missing
-  }
+ 
 
   try {
     // Fetch the most recent 100 records for the specified coin from the database

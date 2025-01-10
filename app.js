@@ -19,7 +19,7 @@ fetchCryptoData();
 cron.schedule('0 */2 * * *', () => {
     console.log('Running scheduled job to fetch crypto data...');
     fetchCryptoData();
-  });
+  }); 
 
 const app = express(); // Initialize an Express application
 
