@@ -1,3 +1,4 @@
+const axios = require('axios');
 require('dotenv').config(); // Load environment variables from .env file
 
 const fetchCryptoData = async () => {
