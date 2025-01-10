@@ -1,4 +1,5 @@
 const axios = require('axios');
+require('dotenv').config(); // Make sure to load environment variables
 
 // Controller function to handle requests for cryptocurrency statistics
 const getStats = async (req, res) => {
@@ -9,8 +10,11 @@ const getStats = async (req, res) => {
   }
 
   try {
-    // Add headers and an API key if needed
-    const response = await axios.get('https://api.coingecko.com/api/v3/simple/price', {
+    // Define the API endpoint
+    const url = `https://api.coingecko.com/api/v3/simple/price`;
+
+    // Add API key and other parameters securely
+    const response = await axios.get(url, {
       params: {
         ids: coin, // The coin requested (e.g., 'bitcoin')
         vs_currencies: 'usd',
@@ -18,7 +22,8 @@ const getStats = async (req, res) => {
         include_24hr_change: true,
       },
       headers: {
-        'User-Agent': 'CryptoTrackerApp', // Add a user-agent to mimic a browser request
+        'User-Agent': 'CryptoTrackerApp',
+        'Authorization': `Bearer ${process.env.COINGECKO_API_KEY}` // Insert the API key in the header
       }
     });
 
